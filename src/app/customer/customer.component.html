@@ -7,34 +7,34 @@
      *ngIf="state == 'view'"
 >
   <div class="row">
-    <span class="col-md-2 col-xs-12">Customer ID:</span>
-    <span class="col-md-10 col-xs-12">{{ customer.customerId }}</span>
+    <span class="col-md-3 col-xs-12">Customer ID:</span>
+    <span class="col-md-9 col-xs-12">{{ customer.customerId }}</span>
   </div>
   <div class="row">
-    <span class="col-md-2 col-xs-12">First Name:</span>
-    <span class="col-md-10 col-xs-12">{{ customer.firstName }}</span>
+    <span class="col-md-3 col-xs-12">First Name:</span>
+    <span class="col-md-9 col-xs-12">{{ customer.firstName }}</span>
   </div>
   <div class="row">
-    <span class="col-md-2 col-xs-12">Last Name:</span>
-    <span class="col-md-10 col-xs-12">{{ customer.lastName }}</span>
+    <span class="col-md-3 col-xs-12">Last Name:</span>
+    <span class="col-md-9 col-xs-12">{{ customer.lastName }}</span>
   </div>
   <div class="row">
-    <span class="col-md-2 col-xs-12">Phone Number:</span>
-    <span class="col-md-10 col-xs-12">{{ customer.phoneNumber }}</span>
+    <span class="col-md-3 col-xs-12">Phone Number:</span>
+    <span class="col-md-9 col-xs-12">{{ customer.phoneNumber }}</span>
   </div>
   <div class="row">
-    <span class="col-md-2 col-xs-12">Email:</span>
-    <span class="col-md-10 col-xs-12">{{ customer.email }}</span>
+    <span class="col-md-3 col-xs-12">Email:</span>
+    <span class="col-md-9 col-xs-12">{{ customer.email }}</span>
   </div>
   <div class="row">
-    <span class="col-md-2 col-xs-12">BirthDate:</span>
-    <span class="col-md-10 col-xs-12">{{ customer.birthDate | date:'yyyy-MM-dd'}}
+    <span class="col-md-3 col-xs-12">BirthDate:</span>
+    <span class="col-md-9 col-xs-12">{{ customer.birthDate | date:'yyyy-MM-dd'}}
          <span class="fa fa-birthday-cake fa-lg" aria-hidden="true"></span>
     </span>
   </div>
   <div class="row">
-    <span class="col-md-4">Age:</span>
-    <span class="col-md-8">{{ customer.birthDate | age:'spec' }}</span>
+    <span class="col-md-3">Age:</span>
+    <span class="col-md-9">{{ customer.birthDate | age:'spec' }}</span>
   </div>
 
   <div>
@@ -79,7 +79,9 @@
              ngbDatepicker #d="ngbDatepicker"
              (focus)="d.open()"
              [ngModel]="customer.birthDate"
-             (ngModelChange)="bdChange(this, $event)"/>
+             (ngModelChange)="bdChange(this, $event)"
+             [ngModelOptions]="{updateOn: 'blur'}"
+      />
       <div class="input-group-addon" (click)="d.toggle()" >
           <button>Cal</button>
           <i class="fa fa-calendar" aria-hidden="true"></i>

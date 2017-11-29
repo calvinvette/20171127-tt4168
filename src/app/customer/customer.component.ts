@@ -37,7 +37,9 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     } else if ((dateIn instanceof String) || (typeof dateIn === 'string')) { // Assume a String/string yyyy-mm-dd format
       const inStr = dateIn.toString();
       const year = inStr.substring(0, 4);
-      const month = inStr.substring(5, 7); const day = inStr.substring(8, 10); return new Date(parseInt(year, 10),
+      const month = inStr.substring(5, 7);
+      const day = inStr.substring(8, 10);
+      return new Date(parseInt(year, 10),
         parseInt(month, 10) - 1,
         parseInt(day, 10));
     } else if ((dateIn instanceof Object) && (dateIn.month)) {
