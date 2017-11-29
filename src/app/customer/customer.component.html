@@ -1,0 +1,94 @@
+<div class="container customerView"
+     [class.underAge]="customer.age < 17"
+     [class.overAge]="customer.age >= 17"
+     (click)="onClick($event)"
+     (mouseover)="onHover($event)"
+     (dblclick)="state = 'edit'"
+     *ngIf="state == 'view'"
+>
+  <div class="row">
+    <span class="col-md-2 col-xs-12">Customer ID:</span>
+    <span class="col-md-10 col-xs-12">{{ customer.customerId }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-2 col-xs-12">First Name:</span>
+    <span class="col-md-10 col-xs-12">{{ customer.firstName }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-2 col-xs-12">Last Name:</span>
+    <span class="col-md-10 col-xs-12">{{ customer.lastName }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-2 col-xs-12">Phone Number:</span>
+    <span class="col-md-10 col-xs-12">{{ customer.phoneNumber }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-2 col-xs-12">Email:</span>
+    <span class="col-md-10 col-xs-12">{{ customer.email }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-2 col-xs-12">BirthDate:</span>
+    <span class="col-md-10 col-xs-12">{{ customer.birthDate | date:'yyyy-MM-dd'}}
+         <span class="fa fa-birthday-cake fa-lg" aria-hidden="true"></span>
+    </span>
+  </div>
+  <div class="row">
+    <span class="col-md-4">Age:</span>
+    <span class="col-md-8">{{ customer.birthDate | age:'spec' }}</span>
+  </div>
+
+  <div>
+         <span *ngIf="customer.age >= 17">This customer is an adult in the
+           Wizarding community</span>
+         <span *ngIf="customer.age < 17">This customer is NOT an adult in the
+          Wizarding community</span>
+  </div>
+
+
+</div>
+
+<div class="container customerView" *ngIf="state == 'edit'">
+  <div class="row">
+    <span class="col-md-6">Customer ID:</span>
+    <span class="col-md-6">{{ customer.customerId }}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">First Name:</span>
+    <span class="col-md-6"><input
+      [(ngModel)]="customer.firstName"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Last Name:</span>
+    <span class="col-md-6"><input
+      [(ngModel)]="customer.lastName"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Phone Number:</span>
+    <span class="col-md-6"><input
+      [(ngModel)]="customer.phoneNumber"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Email:</span>
+    <span class="col-md-6"><input
+      [(ngModel)]="customer.email"/></span>
+  </div>
+  <div class="row">
+    <span class="col-md-6">Birth Date:</span>
+    <span class="col-md-6">
+      <input name="birthDate" placeholder="yyyy-mm-dd"
+             ngbDatepicker #d="ngbDatepicker"
+             (focus)="d.open()"
+             [ngModel]="customer.birthDate"
+             (ngModelChange)="bdChange(this, $event)"/>
+      <div class="input-group-addon" (click)="d.toggle()" >
+          <button>Cal</button>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+         <span class="sr-only">Birthday Calendar Control</span>
+      </div>
+    </span>
+  </div>
+  <div>
+    <button (click)="update()">Save</button>
+  </div>
+</div>
+
