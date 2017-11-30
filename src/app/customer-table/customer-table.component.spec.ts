@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomerTableComponent } from './customer-table.component';
+import {RouterTestingModule} from "@angular/router/testing";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
 describe('CustomerTableComponent', () => {
   let component: CustomerTableComponent;
@@ -8,7 +11,14 @@ describe('CustomerTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomerTableComponent ]
+      declarations: [ CustomerTableComponent ],
+      imports: [
+        RouterTestingModule,
+        NgbModule.forRoot()
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
     .compileComponents();
   }));
