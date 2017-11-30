@@ -8,10 +8,17 @@
      navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand"><img src="assets/trivera.jpg"/> {{title}}</a>
+    <a [routerLink]="['/home']" class="navbar-brand"><img src="assets/trivera.jpg"/> {{title}}</a>
     <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed"
          id="navbarContent">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a [routerLink]="['/CustomerManagement']" class="nav-link">Customer Management</a> </li>
+        <li class="nav-item">
+          <a [routerLink]="['/OrderManagement']"  class="nav-link">Order Management</a> </li>
+        <li class="nav-item">
+          <a [routerLink]="['/ShippingManagement']"  class="nav-link">Shipping Management</a> </li>
+
         <li class="nav-item">
           <a class="nav-link">Getting Started</a>co
         </li>
@@ -24,9 +31,7 @@
            </span>
     </div>
   </header>
-  <div class="row">
-    <span class="col-md-4" *ngFor="let cust of customers"><customer [customerId]="cust.customerId"></customer></span>
-  </div>
+  <router-outlet></router-outlet>
 </div>
 <footer class="bd-footer text-muted">
   <div class="container">

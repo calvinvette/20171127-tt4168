@@ -32,27 +32,7 @@ export class AppComponent implements AfterViewInit{
   private _title = 'My Very Cool App';
   private _navbarCollapsed: boolean = false;
   public defaultCustomerId: number = 1234;
-  private _customers: Customer[] = [ ];
-
-  // cust: Customer = new Customer(1235, "Hermione", "Granger", "+44 0206 918-1951", "hermoine@hogwarts.ac.uk", new Date(1979, 8, 17))
-  // firstName = "Hermione";
-  // birthDate = new Date(1979, 8, 17);
   private _now: Date = new Date();
-
-  constructor() {
-    CustomerComponent.customers[1237] = new Customer(1237, "Neville", "Longbottom", "+44 0206 931-9133", "neville@hogwarts.ac.uk");
-    for (let custKey in CustomerComponent.customers) { // for .. in on a Map returns back keys (aka object properties)
-      this.customers.push(CustomerComponent.customers[custKey]);
-      let start = new Date(1980, 1, 1);
-      let end = new Date();
-      let timeRangeInMS = (end.getTime() - start.getTime());
-      let randomDate : Date = new Date(start.getTime() + Math.random() *
-        timeRangeInMS);
-      CustomerComponent.customers[custKey].birthDate = randomDate;
-    }
-    console.log("Customers: ");
-    console.log(this.customers);
-  }
 
   ngAfterViewInit() {
     // CustomerComponent.customers[1237] = new Customer(1237, "Neville", "Longbottom", null, null);
@@ -78,13 +58,7 @@ export class AppComponent implements AfterViewInit{
     this._navbarCollapsed = value;
   }
 
-  get customers(): Customer[] {
-    return this._customers;
-  }
 
-  set customers(value: Customer[]) {
-    this._customers = value;
-  }
 
   get now(): Date {
     return this._now;

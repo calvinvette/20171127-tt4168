@@ -47,7 +47,111 @@
 
 </div>
 
+
 <div class="container customerView" *ngIf="state == 'edit'">
+  <form [formGroup]="customerForm"> {{customerForm.valid}}
+    {{customerForm.status}}
+    <div class="row">
+      <span class="col-md-6">Customer ID:</span>
+      <span class="col-md-6">{{ customer.customerId }}</span>
+    </div>
+    <div class="row form-group" [ngClass]="{'has-error':
+!customerForm.get('firstName').valid}">
+      <span class="col-md-6">First Name:</span>
+      <span class="col-md-6"><input formControlName="firstName"/></span>
+      {{customerForm.get('firstName').value}}
+      {{customerForm.get('firstName').status}}
+      <div class="alert alert-danger"
+           *ngIf="!customerForm.get('firstName').valid">
+        <span>
+          This field is invalid.
+        </span>
+        <ul>
+          <li *ngIf="customerForm.get('firstName').hasError('required')">
+            This field is required.
+          </li>
+          <li *ngIf="customerForm.get('firstName').hasError('minlength')">
+            This field has a limit of 2 characters.
+          </li>
+          <li *ngIf="customerForm.get('firstName').hasError('maxlength')">
+            This field has a limit of 25 characters.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row form-group" [ngClass]="{'has-error':
+!customerForm.get('lastName').valid}">
+      <span class="col-md-6">Last Name:</span>
+      <span class="col-md-6"><input formControlName="lastName"/></span>
+      <div class="alert alert-danger"
+           *ngIf="!customerForm.get('lastName').valid">
+        <span>
+          This field is invalid.
+        </span>
+        <ul>
+          <li *ngIf="customerForm.get('lastName').hasError('required')">
+            This field is required.
+          </li>
+          <li *ngIf="customerForm.get('lastName').hasError('minlength')">
+            This field has a limit of 2 characters.
+          </li>
+          <li *ngIf="customerForm.get('lastName').hasError('maxlength')">
+            This field has a limit of 25 characters.
+          </li>
+        </ul> </div>
+    </div>
+    <div class="row form-group" [ngClass]="{'has-error':
+!customerForm.get('phoneNumber').valid}">
+      <span class="col-md-6">Phone Number:</span>
+      <span class="col-md-6"><input formControlName="phoneNumber"/></span>
+      <div class="alert alert-danger"
+           *ngIf="!customerForm.get('phoneNumber').valid">
+             <span>
+               This field is invalid.
+</span> <ul>
+        <li *ngIf="customerForm.get('phoneNumber').hasError('pattern')">
+          This field needs be a phone number.
+        </li> </ul>
+      </div>
+    </div>
+    <div class="row form-group" [ngClass]="{'has-error':
+     !customerForm.get('email').valid}">
+      <span class="col-md-6">Email:</span>
+      <span class="col-md-6"><input formControlName="email"/></span>
+      <div class="alert alert-danger"
+           *ngIf="!customerForm.get('email').valid">
+             <span>
+               This field is invalid.
+             </span>
+        <ul>
+          <li *ngIf="customerForm.get('email').hasError('pattern')">
+            This field needs be an email address.
+          </li>
+        </ul> </div>
+    </div>
+    <div class="row form-group" [ngClass]="{'has-error':
+     !customerForm.get('birthDate').valid}">
+      <span class="col-md-6">Birth Date:</span>
+      <span class="col-md-6">
+     <input name="birthDate" placeholder="yyyy-mm-dd"
+            ngbDatepicker="true" #d="ngbDatepicker" (focus)="d.open()"
+            formControlName="birthDate" (ngModelChange)="bdChange(this,
+     $event)"/>
+     <div class="input-group-addon" (click)="d.toggle()">
+     <button>Cal</button>
+         <i class="fa fa-calendar" aria-hidden="true"></i>
+     </div>
+     </span>
+    </div>
+    <div class="row">
+      <button (click)="update()">Update Customer</button>
+    </div>
+  </form>
+</div>
+
+<!--
+<div class="container customerView" *ngIf="state == 'edit'">
+
   <div class="row">
     <span class="col-md-6">Customer ID:</span>
     <span class="col-md-6">{{ customer.customerId }}</span>
@@ -73,24 +177,27 @@
       [(ngModel)]="customer.email"/></span>
   </div>
   <div class="row">
-    <span class="col-md-6">Birth Date:</span>
-    <span class="col-md-6">
+    <span class="col-md-4">Birth Date:</span>
+    <span class="col-md-8">
+      <span class="input-group">
+         <button class="input-group-addon" (click)="d.toggle()" type="button">
+          <i class="fa fa-calendar" aria-hidden="true"></i></button>
+         <span class="sr-only">Birthday Calendar Control</span>
       <input name="birthDate" placeholder="yyyy-mm-dd"
              ngbDatepicker #d="ngbDatepicker"
-             (focus)="d.open()"
+             (focus)="d.toggle()"
              [ngModel]="customer.birthDate"
-             (ngModelChange)="bdChange(this, $event)"
+             (ngModelChange)="bdChange(this, $event, d)"
              [ngModelOptions]="{updateOn: 'blur'}"
+             (focus)="ngbdp = d"
       />
-      <div class="input-group-addon" (click)="d.toggle()" >
-          <button>Cal</button>
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-         <span class="sr-only">Birthday Calendar Control</span>
-      </div>
+
+      </span>
     </span>
   </div>
   <div>
     <button (click)="update()">Save</button>
   </div>
 </div>
+-->
 
