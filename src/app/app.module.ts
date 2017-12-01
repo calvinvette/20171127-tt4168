@@ -18,6 +18,8 @@ import { ShipmentViewComponent } from './shipment-view/shipment-view.component';
 import {RouterModule} from "@angular/router";
 import {AppRouting} from "./app.routing";
 import {CustomerLocalStorageService} from "./customer-local-storage/customer-local-storage.service";
+import {CustomerRESTStorageService} from "./customer-rest-storage/customer-rest-storage.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -39,11 +41,13 @@ import {CustomerLocalStorageService} from "./customer-local-storage/customer-loc
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    HttpClientModule,
     NgbModule.forRoot(), // Angular-level module import (Glue for Bootstrap
     AppRouting
   ],
   providers: [
-    CustomerLocalStorageService
+    CustomerLocalStorageService,
+    CustomerRESTStorageService
   ],
   bootstrap: [AppComponent]
 })

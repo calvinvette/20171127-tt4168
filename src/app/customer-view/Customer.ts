@@ -74,4 +74,31 @@ export class Customer implements Person {
   public set age(value: any) {
 
   }
+
+  /**
+   * Removes underscores when invoked by JSON.stringify()
+   * @returns {JSON array of customer properties without the leading "_" (underscore)}
+   */
+  public toJSON(): any {
+    const result: any = {};
+    // result.customerId = this._customerId;
+    // result.firstName = this._firstName;
+    // result.lastName = this._lastName;
+    // result.phoneNumber = this._phoneNumber;
+    // result.email = this._email;
+    // result.birthDate = this._birthDate;
+
+    for (var prop in this) {
+      if (this.hasOwnProperty(prop)) {
+        if (prop.startsWith('_')) {
+          const noUnderscorePropName = prop.substr(1);
+          result[noUnderscorePropName] = this[prop];
+        } else {
+          result[prop] = this[prop];
+        }
+      }
+    }
+
+    return result;
+  }
 }

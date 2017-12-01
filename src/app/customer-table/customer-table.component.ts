@@ -3,6 +3,7 @@ import {CustomerComponent} from "../customer-view/customer-view.component";
 import {Customer} from "../customer-view/Customer";
 import {CustomerStorageService} from "../customer-storage-service";
 import {CustomerLocalStorageService} from "../customer-local-storage/customer-local-storage.service";
+import {CustomerRESTStorageService} from "../customer-rest-storage/customer-rest-storage.service";
 
 declare var $ : any;
 
@@ -14,7 +15,7 @@ declare var $ : any;
 export class CustomerTableComponent implements OnInit {
   private _customers: Customer[] = [];
 
-  constructor(@Inject(CustomerLocalStorageService) private customerStorageService: CustomerStorageService) {
+  constructor(@Inject(CustomerRESTStorageService) private customerStorageService: CustomerStorageService) {
     customerStorageService.findAll().subscribe(custs => {
       for (const cust in custs) {
         this.customers.push($.extend(new Customer(), custs[cust]));

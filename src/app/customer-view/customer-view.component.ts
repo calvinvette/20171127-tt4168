@@ -7,6 +7,7 @@ import {CustomerStorageService} from "../customer-storage-service";
 import {CustomerAddedEvent} from "./CustomerAddedEvent";
 import {CustomerUpdatedEvent} from "./CustomerUpdatedEvent";
 import {CustomerDeletedEvent} from "./CustomerDeletedEvent";
+import {CustomerRESTStorageService} from "../customer-rest-storage/customer-rest-storage.service";
 
 declare var $ : any;
 
@@ -43,7 +44,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
   // private fb: FormBuilder;
 
   constructor(private fb: FormBuilder,
-              @Inject(CustomerLocalStorageService) private customerStorageService: CustomerStorageService,
+              @Inject(CustomerRESTStorageService) private customerStorageService: CustomerStorageService,
               private dpConfig: NgbDatepickerConfig, private ngbDateParserFormatter: NgbDateParserFormatter) {
 
 
