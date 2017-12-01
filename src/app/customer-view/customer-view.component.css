@@ -11,3 +11,8 @@
   background-color: green;
   color: white;
 }
+
+.has-error {
+  color: red;
+  background-color: lightgrey;
+}

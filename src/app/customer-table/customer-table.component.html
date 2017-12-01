@@ -1,3 +1,7 @@
-<div class="row">
-  <span class="col-md-4" *ngFor="let cust of customers"><customer [customerId]="cust.customerId"></customer></span>
+<div class="container">
+  <div class="row">
+		<span class="col-md-4" *ngFor="let cust of customers">
+			<customer-view [customerId]="cust.customerId"></customer-view>
+		</span>
+  </div>
 </div>

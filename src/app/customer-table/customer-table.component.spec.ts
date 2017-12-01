@@ -4,6 +4,7 @@ import { CustomerTableComponent } from './customer-table.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {AgePipe} from "../age.pipe";
 
 describe('CustomerTableComponent', () => {
   let component: CustomerTableComponent;
@@ -11,13 +12,16 @@ describe('CustomerTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomerTableComponent ],
+      declarations: [
+        CustomerTableComponent,
+        AgePipe
+      ],
       imports: [
         RouterTestingModule,
-        NgbModule.forRoot()
+        NgbModule
       ],
       schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
+        // CUSTOM_ELEMENTS_SCHEMA
       ]
     })
     .compileComponents();

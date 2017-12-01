@@ -1,6 +1,6 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {Customer} from "./customer/Customer";
-import {CustomerComponent} from "./customer/customer.component";
+import {Customer} from "./customer-view/Customer";
+import {CustomerComponent} from "./customer-view/customer-view.component";
 
 @Component({
   selector: 'app-root',

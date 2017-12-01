@@ -1,6 +1,5 @@
 <div class="container" style="padding-left: 0; padding-right: 0;">
-  <header class="navbar navbar-light navbar-fixed-top navbar-togglenable-
-     md">
+  <header class="navbar navbar-light navbar-fixed-top navbar-togglenable-md">
     <button class="navbar-toggler navbar-toggler-right" type="button"
             (click)="toggleTheNavBar()"
             [attr.aria-expanded]="!navbarCollapsed" aria-
@@ -8,12 +7,14 @@
      navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <a [routerLink]="['/home']" class="navbar-brand"><img src="assets/trivera.jpg"/> {{title}}</a>
-    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed"
-         id="navbarContent">
+
+    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a [routerLink]="['/CustomerManagement']" class="nav-link">Customer Management</a> </li>
+          <a [routerLink]="['/CustomerManagement']" class="nav-link">Customer Management</a>
+        </li>
         <li class="nav-item">
           <a [routerLink]="['/OrderManagement']"  class="nav-link">Order Management</a> </li>
         <li class="nav-item">
@@ -23,16 +24,20 @@
           <a class="nav-link">Getting Started</a>co
         </li>
         <li class="nav-item">
-          <a class="nav-link">Courses</a>
-        </li> </ul>
+          <a [routerLink]="['/ShippingManagement']"  class="nav-link">Shipping Management</a>
+        </li>
+      </ul>
+
       <span class="buttons">
-             <a href="http://triveratech.com" target="_blank">Trivera Home</a>
-             <a href="http://meetings.webex.com" target="_blank">WebEx</a>
-           </span>
+        <a href="http://triveratech.com" target="_blank">Trivera Home</a>
+        <a href="http://meetings.webex.com" target="_blank">WebEx</a>
+      </span>
     </div>
   </header>
-  <router-outlet></router-outlet>
 </div>
+
+<router-outlet></router-outlet>
+
 <footer class="bd-footer text-muted">
   <div class="container">
     &copy; 2017 Trivera Technologies

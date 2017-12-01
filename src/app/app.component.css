@@ -2,3 +2,7 @@
   background-color: beige;
   text-align:center
 }
+.has-error {
+  color: red;
+  background-color: grey;
+}

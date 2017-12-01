@@ -71,4 +71,7 @@ export class Customer implements Person {
       * 365.25);
   }
 
+  public set age(value: any) {
+
+  }
 }

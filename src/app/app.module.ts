@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CustomerComponent } from './customer/customer.component';
+import { CustomerComponent } from './customer-view/customer-view.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap"; // TS-level import
 import { AgePipe } from './age.pipe';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -17,6 +17,7 @@ import { OrderViewComponent } from './order-view/order-view.component';
 import { ShipmentViewComponent } from './shipment-view/shipment-view.component';
 import {RouterModule} from "@angular/router";
 import {AppRouting} from "./app.routing";
+import {CustomerLocalStorageService} from "./customer-local-storage/customer-local-storage.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import {AppRouting} from "./app.routing";
     NgbModule.forRoot(), // Angular-level module import (Glue for Bootstrap
     AppRouting
   ],
-  providers: [],
+  providers: [
+    CustomerLocalStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
